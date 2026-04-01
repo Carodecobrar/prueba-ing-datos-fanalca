@@ -24,12 +24,11 @@ python .\etl_pipeline\etl_pipeline.py
 
 Salida
 ------
-- El script imprime información por consola (progreso) y genera un archivo CSV llamado `covid19_confirmed_global_transformed_YYYY-MM-DD_HH-MM-SS.csv` en el directorio de trabajo.
+- El script imprime información por consola.
 
 Notas y supuestos
 ------------------
 - El script descarga los datos desde una URL pública de GitHub (CSSE COVID-19 time series). Requiere conexión a internet.
-- Solo se detectó la dependencia `pandas` en el código; si añade más librerías, actualice `requirements.txt`.
 
 Contacto
 --------
