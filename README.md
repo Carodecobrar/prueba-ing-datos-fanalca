@@ -2,9 +2,7 @@
 
 Descripción
 -----------
-Contacto
---------
-Repositorio: prueba-ing-datos-fanalca
+Es un ETL Pipeline que procesa datos de un CSV y los muestra en consola.
 
 ```powershell
 python -m venv .venv; .\.venv\Scripts\Activate.ps1
