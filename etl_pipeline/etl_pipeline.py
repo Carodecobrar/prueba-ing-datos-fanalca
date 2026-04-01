@@ -1,5 +1,4 @@
 import pandas as pd
-import datetime
 
 def extract_data():
     """Extrae datos de un archivo CSV (tiene que estar en una URL)"""
