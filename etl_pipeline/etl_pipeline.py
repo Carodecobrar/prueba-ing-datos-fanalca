@@ -6,7 +6,7 @@ def extract_data():
     try:
         url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
         data = pd.read_csv(url)
-        print("Datos extraidos correctamente.")
+        print("---------------------------Datos extraidos correctamente---------------------------")
         return data
     except Exception as e:
         print(f"Error durante la extracción: {e}")
@@ -28,7 +28,12 @@ def transform_data(data):
         )
         #Formato de fechas
         dataframe_agrupado['Date'] = pd.to_datetime(dataframe_agrupado['Date'])
-        print("Datos transformados correctamente.")
+        #Nuevas columnas
+        dataframe_agrupado['Month'] = dataframe_agrupado['Date'].dt.month
+        dataframe_agrupado['Day'] = dataframe_agrupado['Date'].dt.day
+        #Ordenamiento descendente
+        dataframe_agrupado = dataframe_agrupado.sort_values(by=['Country/Region', 'Date'], ascending=False)
+        print("---------------------------Datos transformados correctamente---------------------------")
         return dataframe_agrupado
     except Exception as e:
         print(f"Error durante la transformación: {e}")
@@ -38,7 +43,7 @@ def load_data(data):
     """Carga los datos transformados a un archivo CSV local"""
     try:
         data.to_csv("covid19_confirmed_global_transformed_"+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")+".csv", index=False)
-        print("Datos cargados correctamente.")
+        print("---------------------------Datos cargados correctamente---------------------------")
     except Exception as e:
         print(f"Error durante la carga: {e}")
 
