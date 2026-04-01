@@ -38,15 +38,3 @@ def transform_data(data):
     except Exception as e:
         print(f"Error durante la transformación: {e}")
         return None
-    
-def load_data(data):
-    """Carga los datos transformados a un archivo CSV local"""
-    try:
-        data.to_csv("covid19_confirmed_global_transformed_"+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")+".csv", index=False)
-        print("---------------------------Datos cargados correctamente---------------------------")
-    except Exception as e:
-        print(f"Error durante la carga: {e}")
-
-data = extract_data()
-print(data.head())
-print(transform_data(data).head())
