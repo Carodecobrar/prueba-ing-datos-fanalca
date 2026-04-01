@@ -2,7 +2,7 @@
 
 Descripción
 -----------
-\nContacto
+Contacto
 --------
 Repositorio: prueba-ing-datos-fanalca
 
