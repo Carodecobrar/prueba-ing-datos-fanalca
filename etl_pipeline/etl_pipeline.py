@@ -37,3 +37,6 @@ def transform_data(data):
     except Exception as e:
         print(f"Error durante la transformación: {e}")
         return None
+
+print(extract_data().head())
+print(transform_data(extract_data()).head())
