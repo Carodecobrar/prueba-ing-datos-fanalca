@@ -15,10 +15,21 @@ def extract_data():
 def transform_data(data):
     """Transforma los datos para su análisis"""
     try:
-        #Quitar columnas sin valores
-        data = data.dropna()
+        #Columnas fijas
+        fixed_columns = ['Province/State', 'Country/Region', 'Lat', 'Long']
+        #Columnas de fechas
+        date_columns = [col for col in data.columns if col not in fixed_columns]
+        #Agrupacion
+        dataframe_agrupado = data.melt(
+            id_vars=fixed_columns,
+            value_vars=date_columns,
+            var_name='Date',
+            value_name='Confirmed'
+        )
+        #Formato de fechas
+        dataframe_agrupado['Date'] = pd.to_datetime(dataframe_agrupado['Date'])
         print("Datos transformados correctamente.")
-        return data
+        return dataframe_agrupado
     except Exception as e:
         print(f"Error durante la transformación: {e}")
         return None
@@ -33,3 +44,4 @@ def load_data(data):
 
 data = extract_data()
 print(data.head())
+print(transform_data(data).head())
